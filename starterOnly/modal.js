@@ -20,4 +20,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-
+// Ferme la modale au click sur la X
+function closeModal() {
+  modalbg.style.display = 'none';
+}
