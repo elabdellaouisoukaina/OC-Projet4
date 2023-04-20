@@ -24,3 +24,8 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = 'none';
 }
+
+// Valide le frormulaire
+function validate(){
+  console.log('valide le form');
+}
