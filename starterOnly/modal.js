@@ -65,21 +65,34 @@ function validate(){
   const email = document.getElementById("email").value;
   const emailMatchPattern = email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z0-9._%+-]/); // accepte les formats aa@aa.aa / aa.aa@aa.aa / etc
   if (emailMatchPattern !== null) { // emailMatchPattern = null lorsque la saisie ne respecte pas le pattern
-    console.log(emailMatchPattern);
     var emailValid = true;
     document.getElementById("emailError").style.display = "none";
   } else {
-    console.log(emailMatchPattern)
     var emailValid = false;
     document.getElementById("emailError").style.display = "block";
   }
 
+  // Validation champs date de naissance et affichage du message d'erreur si saisie incorrecte
+  const birthdate = document.getElementById("birthdate").value;
+  const birthdateMatchPattern = birthdate.match(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/); // Accepte JJ/MM/AAAA ou MM/DD/YYYY
+  if (birthdateMatchPattern !== null) { // Champs non vide
+    var birthdateValid = true;
+    document.getElementById("birthdateError").style.display = "none";
+  } else {
+    var birthdateValid = false;
+    document.getElementById("birthdateError").style.display = "block";
+  }
+
+
+
+
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid === true  && lastValid === true && emailValid === true) { 
+  if (firstValid === true  && lastValid === true && emailValid === true && birthdateValid === true) { 
     // Tous les champs sont vidés
     document.getElementById("first").value = "";
     document.getElementById("last").value = "";
     document.getElementById("email").value = "";
+    document.getElementById("birthdateValid").value = "";
 
     return true;
   } else {
