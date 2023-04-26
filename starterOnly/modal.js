@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const form = document.getElementById("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,12 +21,53 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+
+
 // Ferme la modale au click sur la X
 function closeModal() {
   modalbg.style.display = 'none';
 }
 
-// Valide le frormulaire
+// Valide le formulaire
+form.addEventListener("submit", (event)=>{
+  event.preventDefault(); // Evite rechargement de la page (comportement par défault)
+  if (validate() === true) {
+    // Affiche message de confirmation d'envoi du formulaire
+    document.getElementById("formSent").style.display = "block";
+  } else {
+    document.getElementById("formSent").style.display = "none";  
+  }
+})
+
+// Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validate(){
-  console.log('valide le form');
+  // Validation champs prénom et affichage du message d'erreur si saisie incorrecte
+  const first = document.getElementById("first").value;
+  if (first.length >= 2) { // Saisie prénom minimum deux caractères, n'est pas vide
+    var firstValid = true;
+    document.getElementById("firstError").style.display = "none";
+  } else {
+    var firstValid = false;
+    document.getElementById("firstError").style.display = "block";
+  }
+
+  // Validation champs nom et affichage du message d'erreur si saisie incorrecte
+  const last = document.getElementById("last").value;
+  if (last.length >= 2) {
+    var lastValid = true;
+    document.getElementById("lastError").style.display = "none";
+  } else {
+    var lastValid = false;
+    document.getElementById("lastError").style.display = "block";
+  }
+
+  // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
+  if (firstValid === true  && lastValid === true) { 
+    // Tous les champs sont vidés
+    document.getElementById("first").value = "";
+    document.getElementById("last").value = "";
+    return true;
+  } else {
+    return false;
+  }  
 }
