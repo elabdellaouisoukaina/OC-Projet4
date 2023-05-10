@@ -71,8 +71,15 @@ function emailValid(email){
 
 // Valide le champs Date de naissance : retourne true si n'est pas vide et personne majeur de + de 18 ans (et > 120 ans)
 function birthdateValid(birthdate){
-  
-}
+  const birthdateMatchPattern = birthdate.match(/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/); // Accepte le format JJ/MM/AAAA 
+
+  if (birthdateMatchPattern !== null) { // Champs non vide
+    document.getElementById("birthdateError").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("birthdateError").style.display = "block";
+    return false;
+  }
 
 // Valide le champs Nombre de tournois : retourne true si valeur numérique saisie > 100
 function nbContestValid(){
@@ -85,31 +92,20 @@ function whichContestValid(){
 }
 
 // Valide le champs CGU : retourne true si doit être cochée
-function cguVaid(){
+function cguValid(){
   
 }
 
 
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
-
-  // // Validation champs date de naissance et affichage du message d'erreur si saisie incorrecte
-  // const birthdate = document.getElementById("birthdate").value;
-  // const birthdateMatchPattern = birthdate.match(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/); // Accepte JJ/MM/AAAA ou MM/DD/YYYY
-  // if (birthdateMatchPattern !== null) { // Champs non vide
-  //   var birthdateValid = true;
-  //   document.getElementById("birthdateError").style.display = "none";
-  // } else {
-  //   var birthdateValid = false;
-  //   document.getElementById("birthdateError").style.display = "block";
-  // }
-
   var first = document.getElementById("first").value;
   var last = document.getElementById("last").value;
   var email = document.getElementById("email").value;
+  var birthdate = document.getElementById("birthdate").value;
 
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first) === true  && lastValid(last) === true && emailValid(email) === true) { 
+  if (firstValid(first) === true  && lastValid(last) === true && emailValid(email) === true && birthdateValid(birthdate) === true){ 
     form.reset(); // Réinitialise le formulaire
     return true;
   } else {
@@ -118,7 +114,7 @@ function validateAll(){
 }
 
 
-// Valide le formulaire
+// Validation finale du formulaire
 form.addEventListener("submit", (event)=>{
   event.preventDefault(); // Evite rechargement de la page (comportement par défault)
   if (validateAll() === true) {
@@ -129,6 +125,6 @@ form.addEventListener("submit", (event)=>{
     document.getElementById("formSent").style.display = "none";  
   }
   
-  console.log("first: "+first+", last: "+last+", email: " + email)
+  console.log("first: "+first+", last: "+last+", email: " + email + ', date de naissance: ' + birthdate + );
 })
 
