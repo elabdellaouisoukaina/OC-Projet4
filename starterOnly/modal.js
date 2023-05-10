@@ -104,18 +104,13 @@ function validateAll(){
   //   document.getElementById("birthdateError").style.display = "block";
   // }
 
-
   var first = document.getElementById("first").value;
   var last = document.getElementById("last").value;
   var email = document.getElementById("email").value;
 
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
   if (firstValid(first) === true  && lastValid(last) === true && emailValid(email) === true) { 
-    // Tous les champs sont vidés
-    first = "";
-    last = "";
-    email = "";
-    // document.getElementById("birthdateValid").value = "";
+    form.reset(); // Réinitialise le formulaire
     return true;
   } else {
     return false;
@@ -133,5 +128,7 @@ form.addEventListener("submit", (event)=>{
     // Supprime message de confirmation lorsqu'envoi d'un deuxième formulaire à la suite mais invalide
     document.getElementById("formSent").style.display = "none";  
   }
+  
+  console.log("first: "+first+", last: "+last+", email: " + email)
 })
 
