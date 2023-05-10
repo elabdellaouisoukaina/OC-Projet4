@@ -98,15 +98,15 @@ function cguValid(){
 }
 
 
+const first = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
-  var first = document.getElementById("first").value;
-  var last = document.getElementById("last").value;
-  var email = document.getElementById("email").value;
-  var birthdate = document.getElementById("birthdate").value;
-
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first) === true  && lastValid(last) === true && emailValid(email) === true && birthdateValid(birthdate) === true){ 
+  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true){ 
     form.reset(); // Réinitialise le formulaire
     return true;
   } else {
@@ -126,5 +126,5 @@ form.addEventListener("submit", (event)=>{
     document.getElementById("formSent").style.display = "none";  
   }
   
-  console.log("first: "+first+", last: "+last+", email: " + email + ', date de naissance: ' + birthdate);
+  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value);
 })
