@@ -80,11 +80,20 @@ function birthdateValid(birthdate){
     document.getElementById("birthdateError").style.display = "block";
     return false;
   }
+
+  // BONUS A FAIRE :
+  // valider seulement si majeur
 }
 
-// Valide le champs Nombre de tournois : retourne true si valeur numérique saisie > 100
-function nbContestValid(){
-  
+// Valide le champs Nombre de tournois : retourne true si valeur numérique saisie 
+function nbContestValid(quantity){
+  if (quantity !== "") { // Champs non vide
+    document.getElementById("quantityError").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("quantityError").style.display = "block";
+    return false;
+  }
 }
 
 // Valide le champs Quel tournois : retourne true si un bouton radio selectionné
@@ -102,18 +111,20 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
+// const localisation = document.getElementById("localisation1").value;
+// const cgu = document.getElementById("checkbox1").value;
+const nbContest = document.getElementById("quantity"); 
 
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true){ 
+  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value)){ 
     form.reset(); // Réinitialise le formulaire
     return true;
   } else {
     return false;
   }  
 }
-
 
 // Validation finale du formulaire
 form.addEventListener("submit", (event)=>{
@@ -126,5 +137,6 @@ form.addEventListener("submit", (event)=>{
     document.getElementById("formSent").style.display = "none";  
   }
   
-  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value);
+  // Affichage des valeurs du formulaire
+  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value+', nombre de tournois déjà participé: '+nbContest.value);
 })
