@@ -80,6 +80,7 @@ function birthdateValid(birthdate){
     document.getElementById("birthdateError").style.display = "block";
     return false;
   }
+}
 
 // Valide le champs Nombre de tournois : retourne true si valeur numérique saisie > 100
 function nbContestValid(){
@@ -125,6 +126,5 @@ form.addEventListener("submit", (event)=>{
     document.getElementById("formSent").style.display = "none";  
   }
   
-  console.log("first: "+first+", last: "+last+", email: " + email + ', date de naissance: ' + birthdate + );
+  console.log("first: "+first+", last: "+last+", email: " + email + ', date de naissance: ' + birthdate);
 })
-
