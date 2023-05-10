@@ -111,9 +111,15 @@ function locationValid(locationList){
   return [false, location];
 }
 
-// Valide le champs CGU : retourne true si doit être cochée
-function cguValid(){
-  
+// Valide le champs CGU : retourne true si case cochée
+function cguValid(checkbox){
+  if(checkbox.checked) { 
+    document.getElementById("cguError").style.display = "none";
+    return true;
+  } else {
+    document.getElementById("cguError").style.display = "block";
+    return false;
+  }  
 }
 
 
@@ -123,12 +129,12 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const nbContest = document.getElementById("quantity"); 
 const locationList = document.querySelectorAll('input[name="location"]');
-// const cgu = document.getElementById("checkbox1");
+const cgu = document.getElementById("checkbox1");
 
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value) && locationValid(locationList)[0] === true){ 
+  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value) && locationValid(locationList)[0] === true && cguValid(cgu) === true){ 
     form.reset(); // Réinitialise le formulaire
     return true;
   } else {
