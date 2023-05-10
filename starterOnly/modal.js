@@ -97,8 +97,18 @@ function nbContestValid(quantity){
 }
 
 // Valide le champs Quel tournois : retourne true si un bouton radio selectionné
-function whichContestValid(){
-  
+function locationValid(locationList){
+  var location = 'aucun tournoi selectionné';
+  for (const radioButton of locationList) {
+    console.log(radioButton.checked)
+    if(radioButton.checked) {
+      var location = radioButton.value;
+      document.getElementById("locationError").style.display = "none";
+      return [true, location];
+    }
+  }
+  document.getElementById("locationError").style.display = "block";
+  return [false, location];
 }
 
 // Valide le champs CGU : retourne true si doit être cochée
@@ -111,14 +121,14 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
-// const localisation = document.getElementById("localisation1").value;
-// const cgu = document.getElementById("checkbox1").value;
 const nbContest = document.getElementById("quantity"); 
+const locationList = document.querySelectorAll('input[name="location"]');
+// const cgu = document.getElementById("checkbox1");
 
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value)){ 
+  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value) && locationValid(locationList)[0] === true){ 
     form.reset(); // Réinitialise le formulaire
     return true;
   } else {
@@ -137,6 +147,5 @@ form.addEventListener("submit", (event)=>{
     document.getElementById("formSent").style.display = "none";  
   }
   
-  // Affichage des valeurs du formulaire
-  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value+', nombre de tournois déjà participé: '+nbContest.value);
+  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value+', nombre de tournois déjà participé: '+nbContest.value+', localisation: '+locationValid(locationList)[1]);
 })
