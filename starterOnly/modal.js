@@ -146,6 +146,7 @@ function validateAll(){
 form.addEventListener("submit", (event)=>{
   event.preventDefault(); // Evite rechargement de la page (comportement par défault)
   if (validateAll() === true) {
+    form.style.display =  "none";
     // Affiche message de confirmation d'envoi du formulaire
     document.getElementById("formSent").style.display = "block";
   } else {
