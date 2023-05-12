@@ -134,8 +134,15 @@ const cgu = document.getElementById("checkbox1");
 // Vérifie la validité des champs saisis et renvoi true si formulaire correctement complété
 function validateAll(){
   // Vérifie que tous les champs sont valides et retourne un bouléen pour dire si entierté du form valide ou non
-  if (firstValid(first.value) === true  && lastValid(last.value) === true && emailValid(email.value) === true && birthdateValid(birthdate.value) === true && nbContestValid(nbContest.value) && locationValid(locationList)[0] === true && cguValid(cgu) === true){ 
-    form.reset(); // Réinitialise le formulaire
+  const isFirstValid = firstValid(first.value);
+  const isLastValid = lastValid(last.value);
+  const isEmailValid = emailValid(email.value);
+  const isBirthdateValid = birthdateValid(birthdate.value);
+  const isNumberContestValid = nbContestValid(nbContest.value); 
+  const isLocationValid = locationValid(locationList)[0];
+  const isCguValid = cguValid(cgu);
+
+  if (isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isNumberContestValid && isLocationValid && isCguValid){ 
     return true;
   } else {
     return false;
@@ -145,7 +152,9 @@ function validateAll(){
 // Validation finale du formulaire
 form.addEventListener("submit", (event)=>{
   event.preventDefault(); // Evite rechargement de la page (comportement par défault)
-  if (validateAll() === true) {
+  if (validateAll()) {
+    console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value+', nombre de tournois déjà participé: '+nbContest.value+', localisation: '+locationValid(locationList)[1]);
+    form.reset(); // Réinitialise le formulaire
     form.style.display =  "none";
     // Affiche message de confirmation d'envoi du formulaire
     document.getElementById("formSent").style.display = "block";
@@ -153,6 +162,4 @@ form.addEventListener("submit", (event)=>{
     // Supprime message de confirmation lorsqu'envoi d'un deuxième formulaire à la suite mais invalide
     document.getElementById("formSent").style.display = "none";  
   }
-  
-  console.log("prénom: "+first.value+", nom: "+last.value+", e-mail: "+email.value+', date de naissance: '+birthdate.value+', nombre de tournois déjà participé: '+nbContest.value+', localisation: '+locationValid(locationList)[1]);
 })
