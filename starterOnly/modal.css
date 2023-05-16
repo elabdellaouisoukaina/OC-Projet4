@@ -33,15 +33,16 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
 }
-.header-logo {
-    float: left;
-}
+
 .main-navbar {
-    float: right;
+  display: flex;
+  flex-direction: row;
 }
+
 .topnav a {
-  float: left;
   display: block;
   color: #000000;
   text-align: center;
@@ -68,15 +69,18 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+.icon i {
+  color : #ff0000;
+}
+
+@media screen and (max-width: 1115px) {
   .topnav a {display: none;}
   .topnav a.icon {
-    float: right;
     display: block;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -84,22 +88,10 @@ img {
     top: 0;
   }
   .topnav.responsive a {
-    float: none;
     display: block;
     text-align: left;
   }
 }
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -227,12 +219,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+ 
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -449,7 +436,6 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -463,6 +449,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -479,7 +466,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .hero-section {
     display: block;
     box-shadow: unset;
