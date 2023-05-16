@@ -89,7 +89,7 @@ function birthdateValid(birthdate){
 
 // Valide le champs Nombre de tournois : retourne true si valeur numérique saisie 
 function nbContestValid(quantity){
-  if (quantity !== "") { // Champs non vide
+  if (quantity !== "" && quantity >= 0) { // Champs non vide
     document.getElementById("quantityError").style.display = "none";
     return true;
   } else {
@@ -102,7 +102,6 @@ function nbContestValid(quantity){
 function locationValid(locationList){
   var location = 'aucun tournoi selectionné';
   for (const radioButton of locationList) {
-    console.log(radioButton.checked)
     if(radioButton.checked) {
       var location = radioButton.value;
       document.getElementById("locationError").style.display = "none";

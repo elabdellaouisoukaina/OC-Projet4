@@ -181,13 +181,22 @@ main {
   min-height: 710px;
 }
 
-label {
+label, .text-label {
   font-family: var(--font-default);
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  padding: 0;
+} 
+
+label {
+  margin: 15px 0 15px 0;
 }
+
+.text-label {
+  margin-top: 15px;
+}
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
@@ -387,11 +396,7 @@ input {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-/* custom select end */
-.text-label {
-  font-weight: normal;
-  font-size: 16px;
-}
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
