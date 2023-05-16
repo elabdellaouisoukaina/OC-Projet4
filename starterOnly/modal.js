@@ -30,6 +30,8 @@ function launchModal() {
 // Ferme la modale au click sur la X
 function closeModal() {
   modalbg.style.display = 'none';
+  document.getElementById("formSent").style.display = "none";  
+  document.getElementById("form").style.display = "block";  
 }
 
 // Valide le champs Prénom : retourne true si minimum 2 caractères / n'est pas vide
@@ -157,7 +159,7 @@ form.addEventListener("submit", (event)=>{
     form.reset(); // Réinitialise le formulaire
     form.style.display =  "none";
     // Affiche message de confirmation d'envoi du formulaire
-    document.getElementById("formSent").style.display = "block";
+    document.getElementById("formSent").style.display = "flex";
   } else {
     // Supprime message de confirmation lorsqu'envoi d'un deuxième formulaire à la suite mais invalide
     document.getElementById("formSent").style.display = "none";  
