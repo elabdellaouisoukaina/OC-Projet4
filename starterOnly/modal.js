@@ -1,9 +1,15 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  const x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
+    // Couleur burger
+    document.querySelector('.icon i').style.color = 'white';
+    document.querySelector('.topnav a:hover').style.backgroundColor  = '#ff0000';
   } else {
     x.className = "topnav";
+    // Couleur burger
+    document.querySelector('.icon i').style.color = '#ff0000';
+    document.querySelector('.topnav a:hover').style.backgroundColor  = 'white';
   }
 }
 
@@ -100,10 +106,10 @@ function nbContestValid(quantity){
 
 // Valide le champs Quel tournois : retourne true si un bouton radio selectionné
 function locationValid(locationList){
-  var location = 'aucun tournoi selectionné';
+  let location = 'aucun tournoi selectionné';
   for (const radioButton of locationList) {
     if(radioButton.checked) {
-      var location = radioButton.value;
+      location = radioButton.value;
       document.getElementById("locationError").style.display = "none";
       return [true, location];
     }
@@ -145,9 +151,9 @@ function validateAll(){
 
   if (isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isNumberContestValid && isLocationValid && isCguValid){ 
     return true;
-  } else {
-    return false;
-  }  
+  } 
+  return false;
+    
 }
 
 // Validation finale du formulaire

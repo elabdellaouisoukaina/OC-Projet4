@@ -78,9 +78,6 @@ img {
   .topnav a.icon {
     display: block;
   }
-}
-
-@media screen and (max-width: 900px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -90,6 +87,9 @@ img {
   .topnav.responsive a {
     display: block;
     text-align: left;
+  }
+  .main-navbar {
+    flex-direction: column;
   }
 }
 
@@ -472,6 +472,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 900px) {
+  .header-logo img {
+    width: 130px;
+    margin-top: 18px;
+    padding-left: 2vw;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -488,12 +493,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
+    width: 80%;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: auto;
+    font-size: 1.2rem;
   }
   .hero-img img {
     border-radius: 10px;
